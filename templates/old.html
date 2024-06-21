@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width,initial-scale=1" name="viewport">
+	<meta content="description" name="description">
+	<meta name="google" content="notranslate" />
+	<meta content="team" name="author">
+
+	<link href="./assets/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="./assets/favicon.ico" rel="icon">
+	<link rel="icon" type="image/png" href="./assets/images/21601.png" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<title>Home - Gaza Fake News Detection</title>
+	<style>
+		.dark-mode {
+			background-color: #121212;
+			color: #ffffff;
+			padding-top: 0px;
+		}
+
+		.dark-mode header,
+		.dark-mode footer {
+			background-color: #1c1c1c;
+		}
+
+		.dark-mode .navbar-default {
+			background-color: #1c1c1c;
+		}
+
+		.dark-mode .navbar-default .navbar-nav>li>a {
+			color: #ffffff;
+		}
+
+		.dark-mode .progress-bar {
+			border-color: #ffb43e;
+		}
+
+		.dark-mode .progress {
+			border-color: #444;
+		}
+
+		.dark-mode .progress:after {
+			border-color: #444;
+		}
+
+		.dark-mode .progress .progress-value {
+			color: #ffffff;
+		}
+
+		.progress {
+			width: 150px;
+			height: 150px;
+			line-height: 150px;
+			background: none;
+			margin: 0 auto;
+			box-shadow: none;
+			position: relative;
+		}
+
+		.progress:after {
+			content: "";
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			border: 7px solid #eee;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.progress>span {
+			width: 50%;
+			height: 100%;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+		}
+
+		.progress .progress-left {
+			left: 0;
+		}
+
+		.progress .progress-bar {
+			width: 100%;
+			height: 100%;
+			background: none;
+			border-width: 7px;
+			border-style: solid;
+			position: absolute;
+			top: 0;
+			border-color: #0d6efd;
+		}
+
+		.progress .progress-left .progress-bar {
+			left: 100%;
+			border-top-right-radius: 75px;
+			border-bottom-right-radius: 75px;
+			border-left: 0;
+			-webkit-transform-origin: center left;
+			transform-origin: center left;
+		}
+
+		.progress .progress-right {
+			right: 0;
+		}
+
+		.progress .progress-right .progress-bar {
+			left: -100%;
+			border-top-left-radius: 75px;
+			border-bottom-left-radius: 75px;
+			border-right: 0;
+			-webkit-transform-origin: center right;
+			transform-origin: center right;
+		}
+
+		.progress .progress-value {
+			display: flex;
+			border-radius: 50%;
+			font-size: 24px;
+			text-align: center;
+			line-height: 20px;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			font-weight: 300;
+		}
+
+		.progress .progress-value div {
+			margin-left: 40px;
+		}
+
+		.progress .progress-value span {
+			font-size: 4px;
+			text-transform: uppercase;
+		}
+
+		.progress[data-percentage="10"] .progress-right .progress-bar {
+			animation: loading-1 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="10"] .progress-left .progress-bar {
+			animation: 0;
+		}
+
+		.progress[data-percentage="20"] .progress-right .progress-bar {
+			animation: loading-2 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="20"] .progress-left .progress-bar {
+			animation: 0;
+		}
+
+		.progress[data-percentage="30"] .progress-right .progress-bar {
+			animation: loading-3 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="30"] .progress-left .progress-bar {
+			animation: 0;
+		}
+
+		.progress[data-percentage="40"] .progress-right .progress-bar {
+			animation: loading-4 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="40"] .progress-left .progress-bar {
+			animation: 0;
+		}
+
+		.progress[data-percentage="50"] .progress-right .progress-bar {
+			animation: loading-5 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="50"] .progress-left .progress-bar {
+			animation: 0;
+		}
+
+		.progress[data-percentage="60"] .progress-right .progress-bar {
+			animation: loading-5 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="60"] .progress-left .progress-bar {
+			animation: loading-1 1.5s linear forwards 1.5s;
+		}
+
+		.progress[data-percentage="70"] .progress-right .progress-bar {
+			animation: loading-5 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="70"] .progress-left .progress-bar {
+			animation: loading-2 1.5s linear forwards 1.5s;
+		}
+
+		.progress[data-percentage="80"] .progress-right .progress-bar {
+			animation: loading-5 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="80"] .progress-left .progress-bar {
+			animation: loading-3 1.5s linear forwards 1.5s;
+		}
+
+		.progress[data-percentage="90"] .progress-right .progress-bar {
+			animation: loading-5 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="90"] .progress-left .progress-bar {
+			animation: loading-4 1.5s linear forwards 1.5s;
+		}
+
+		.progress[data-percentage="100"] .progress-right .progress-bar {
+			animation: loading-5 1.5s linear forwards;
+		}
+
+		.progress[data-percentage="100"] .progress-left .progress-bar {
+			animation: loading-5 1.5s linear forwards 1.5s;
+		}
+
+		@keyframes loading-1 {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(36);
+				transform: rotate(36deg);
+			}
+		}
+
+		@keyframes loading-2 {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(72);
+				transform: rotate(72deg);
+			}
+		}
+
+		@keyframes loading-3 {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(108);
+				transform: rotate(108deg);
+			}
+		}
+
+		@keyframes loading-4 {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(144);
+				transform: rotate(144deg);
+			}
+		}
+
+		@keyframes loading-5 {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(180);
+				transform: rotate(180deg);
+			}
+		}
+
+		.progress {
+			margin-bottom: 1em;
+		}
+
+		.dark-mode-text {
+			color: #ffffff;
+		}
+
+		.nav-margin {
+			margin-right: 80px;
+			margin-left: 80px;
+		}
+
+		.hero {
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			height: 80vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			color: #ffffff;
+		}
+	</style>
+
+
+
+</head>
+
+<body class="dark-mode">
+
+	<nav class="navbar navbar-dark bg-dark">
+		<div class="container-fluid nav-margin">
+			<a class="navbar-brand" href="#">
+				<img src="{{ url_for('static', filename='img/th.jpeg') }}" alt="Logo" width="50" height="40"
+					class="d-inline-block align-text-top">
+				Gaza Fake News Detection
+			</a>
+			<div class="d-flex justify-content-end">
+				<ul class="navbar-nav flex-row pr-3">
+					<li class="nav-item pr-4">
+						<a class="nav-link active" href=".">Home</a>
+					</li>
+					<li class="nav-item pr-4">
+						<a class="nav-link" href=""> &nbsp; &nbsp; &nbsp;</a>
+					</li>
+					<li class="nav-item pr-4">
+						<a class="nav-link" href="">About &nbsp; &nbsp; &nbsp;</a>
+					</li>
+				</ul>
+				<a href="#news-input" class="btn btn-outline-primary ml-3" role="button">Try now</a>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+
+
+	<div class="hero" style="background-image: url({{url_for('static', filename='img/wp.png')}})">
+		<div class="opacity"></div>
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-6">
+					<h1 class="display-1" style="color: black;">Fake News Detection for Gaza</h1>
+					<p class="lead">Explore how artificial intelligence technologies, particularly machine learning and
+						natural
+						language processing, can combat misinformation surrounding Gaza. This technology holds promise
+						for significantly automating parts of the fact-checking process, ensuring accurate reporting and
+						informed decision-making.</p>
+					<a href="#news-input" title="" class="btn btn-lg btn-primary">Try Now</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="section-container border-section-container py-5">
+		<div class="container">
+			<h2 class="display-3 mb-5" style="color: #0d6efd;">Our LTSM Model Evaluation</h2>
+
+			<p class="lead mb-5">
+				Long Short-Term Memory (LSTM) networks are a type of recurrent neural network (RNN) capable of learning
+				long-term dependencies. At our center, we've developed an LSTM-based model for detecting fake news,
+				specifically focused on content related to Gaza. Below are the evaluation metrics of our model:
+			</p>
+
+			<div class="row">
+				<div class="col-md-3 mb-5">
+					<h3>Test Accuracy</h3>
+					<div class="progress mx-auto my-4" data-percentage="90" style="width: 150px;">
+						<span class="progress-left">
+							<span class="progress-bar"></span>
+						</span>
+						<span class="progress-right">
+							<span class="progress-bar"></span>
+						</span>
+						<div class="progress-value">
+							<div>
+								{{ data.acc1 }}%<br>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 text-center mb-5">
+					<h3>Precision</h3>
+					<div class="progress mx-auto my-4" data-percentage="90" style="width: 150px;">
+						<span class="progress-left">
+							<span class="progress-bar"></span>
+						</span>
+						<span class="progress-right">
+							<span class="progress-bar"></span>
+						</span>
+						<div class="progress-value">
+							<div>
+								{{ data.acc2 }}%<br>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 text-center mb-5">
+					<h3>Recall</h3>
+					<div class="progress mx-auto my-4" data-percentage="80" style="width: 150px;">
+						<span class="progress-left">
+							<span class="progress-bar"></span>
+						</span>
+						<span class="progress-right">
+							<span class="progress-bar"></span>
+						</span>
+						<div class="progress-value">
+							<div>
+								{{ data.acc3 }}%<br>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 text-center mb-5">
+					<h3>F1-Score</h3>
+					<div class="progress mx-auto my-4" data-percentage="80" style="width: 150px;">
+						<span class="progress-left">
+							<span class="progress-bar"></span>
+						</span>
+						<span class="progress-right">
+							<span class="progress-bar"></span>
+						</span>
+						<div class="progress-value">
+							<div>
+								{{ data.acc4 }}%<br>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section-container" name="news-input" id="news-input" style="padding-top:200px;">
+		<div class="container">
+			<h2>Fake News Detector <span class="badge bg-info text-dark">New</span></h2>
+			<p class="lead">Enter a news article or a piece of text to determine if it is credible or not.</p>
+			<div class="row">
+				<div class="col-md-12">
+					<form action="/synthesis" class="reveal-content contact-form" method="POST">
+						<div class="form-group">
+							<textarea name="txt" id="txt" class="form-control" rows="3" placeholder="Enter your message"
+								style="height: 300px;"></textarea>
+						</div>
+						<p></p>
+						<button type="submit" class="btn btn-primary btn-lg mx-auto d-block"
+							style="width: 200px;">Check</button>
+					</form>
+					{% if result %}
+					<div class="alert alert-{{ 'success' if result == 'credible' else 'danger' if result == 'not credible' else 'primary' }} mt-4"
+						role="alert">
+						<strong>Prediction:</strong> {{ result }}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer style="padding: 20px; margin-top: 20px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p class="mt-5 mb-3 text-muted">
+						&copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All Rights Reserved at Gaza Fake News Detection Center
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
