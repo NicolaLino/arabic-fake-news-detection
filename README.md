@@ -1,6 +1,6 @@
-# Arabic Fake News Detection for Gaza
+# Arabic Fake News Detection
 
-This project aims to develop a system for detecting fake news in Arabic related to the Gaza region. The goal is to provide a tool that can help users identify and verify the authenticity of news articles and reports.
+This project aims to develop a system for detecting fake news in Arabic. The goal is to provide a tool that can help users identify and verify the authenticity of news articles and reports.
 
 
 ## Approach
